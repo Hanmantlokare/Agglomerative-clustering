@@ -2,7 +2,8 @@ __author__ = 'Hanmant Lokare'
 
 """
 
-Implementation Agglomerative hierarchical clustering algorithm.
+Implementation Agglomerative hierarchical clustering algorithm
+and also calculates cross-corelation co-efficient.
 
 """
 
@@ -164,9 +165,9 @@ class program:
         This function read the input data and calculates cross-corealtion co-efficient
         :return:
         """
-
+        # Reading the dataset from the .csv file
         df = pd.read_csv("HW_AG_SHOPPING_CART_v805.csv")
-        # df = pd.read_csv("temp.csv")
+        
 
         df = df.drop(columns='ID')
         # df = df.drop(columns='  Eggs')
@@ -184,8 +185,6 @@ class program:
             neg_max_list.append(neg_max)
 
         self.agglomerative(df)
-
-        # print(self.merge_list)
         link = hierarchy.linkage(df.values, 'centroid')
         plt.figure()
         plt.ylabel('Eucledian Distance')
